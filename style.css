@@ -1,5 +1,5 @@
 body {
-    font-family:'Open Sans';
+    font-family: "Open Sans", sans-serif;
     background-image: url('https://ypsilonlicensing.com/wp-content/uploads/2018/03/slide2-1.png');
     background-color: #000000;
     background-size: cover;
@@ -9,11 +9,11 @@ body {
 }
 
 .container {
-    width:600px;
+    width: 650px;
     position: absolute;
-    left: 300px;
-    top: 250px;
-    text-align: Center;
+    left: 80px;
+    top: 60px;
+    text-align: center;
     float:left;
 }
 
@@ -25,9 +25,8 @@ body {
   .page-logo {
     width: 200px;
     position: absolute;
-    position: absolute;
-    bottom: 30px;
-    right:10px;
+    bottom: 15px;
+    right: 120px;
   }
   
   .alura-logo {
@@ -37,11 +36,32 @@ body {
     left:10px;
   }
 
+table {
+    border: 2px solid white;
+    border-collapse: collapse;
+    float:left;
+}
+
+th, tr, td {
+    border: solid 1px white;
+    color: white;
+}
+
+.valt{
+  width: 430px;
+  height: 750px;
+}
+
+.beyInicial{
+  width: 250px;
+  height: 219px;  
+}
+
 .imagem1 {
   width:310px;
   position: absolute;
-  left: 100px;
-  top: 400px;
+  left: 800px;
+  top: 200px;
   float:left;
 }
 
@@ -67,6 +87,9 @@ button {
 
 h2 {
     color: black;
+    padding: 0.5rem;
+    border: 2px solid black;
+    background-color: #039BE5;
 }
 
 *#carta-jogador {
@@ -106,4 +129,28 @@ h2 {
 
 .opcoes {
     color: black;
+    font-weigth: bolder;
+    /*padding: 1rem;
+    border: 2px solid black;
+    background-color: #039BE5;
+    text-align: center;*/
+}
+
+.nomeBey {
+    color: black;
+    font-weigth: bolder;
+    padding: 1rem;
+    border: 2px solid black;
+    background-color: white;
+    text-align: center;
+}
+
+.resultado-final {
+    color: black;
+    font-size: 2rem;
+    /*text-transform: uppercase;*/
+    font-weigth: bolder;
+    padding: 1rem;
+    border: 2px solid black;
+    background-color: #039BE5;
 }
