@@ -1,3 +1,7 @@
+//Origem dos dados: https://www.hasbro.com/common/documents/D83B87D6E2AB4791A7BE48878ECE4410/C43169995F7A45DB8185287943434975.pdf
+
+//https://www.hasbro.com/common/documents/D83B87D6E2AB4791A7BE48878ECE4410/150DCB7597DA4506B8E0899BA79C5338.pdf
+
 //exibe imagem na div imagemBeyInicial
 var imagemInicial = document.getElementById('imagemBeyInicial')
 imagemInicialTexto = "<img src='https://lat.beyblade.com/wp-content/uploads/2018/11/S1-BB_Valt_Bey66-1.png' class='beyInicial'/>"
@@ -5,33 +9,21 @@ imagemInicial.innerHTML = imagemInicialTexto
 
 
 //banco de dados
-var bey1 = {
-  nome:"Valtryek",
-  imagem: "https://pm1.narvii.com/6440/4d60db991d7d6a6cc04342f6f114ba11a0c61fcc_hq.jpg",
-  atributos:{
-    Ataque:3,
-    Burst:3,
-    Defesa:2,
-    Peso:4,
-    Agilidade:3,
-    Stamina:4
-  }
-}
 
-var bey2 = {
-  nome:"Roktavor",
-  imagem: "https://i.pinimg.com/originals/c2/b4/c6/c2b4c624835dc0d8c0883f87ee5d01f3.png",
+var bey1 = {
+  nome:"Kerbeus",
+  imagem: "https://i.imgur.com/PGq0MDe.png",
   atributos:{
     Ataque:3,
     Burst:2,
-    Defesa:1,
-    Peso:4,
-    Agilidade:4,
-    Stamina:3
+    Defesa:3,
+    Peso:3,
+    Agilidade:6,
+    Stamina:2,
   }
 }
  
-var bey3 = {
+var bey2 = {
   nome:"Doomscizor",
   imagem: "https://images-na.ssl-images-amazon.com/images/I/81ZW1YzopML._AC_SL1500_.jpg",
   atributos:{
@@ -43,8 +35,457 @@ var bey3 = {
     Stamina:1,
   }
 }
-//-->
 
+var bey3 = {
+  nome:"Wyvron",
+  imagem: "https://i.imgur.com/ZwjVAE5.png",
+  atributos:{
+    Ataque:0,
+    Burst:2,
+    Defesa:8,
+    Peso:3,
+    Agilidade:4,
+    Stamina:2,
+  }
+}
+
+var bey4 = {
+  nome:"Roktavor R2",
+  imagem: "https://www.amazon.co.jp/images/I/91%2BJ75cYmWL._AC_SL1500_.jpg",
+  atributos:{
+    Ataque:1,
+    Burst:2,
+    Defesa:1,
+    Peso:7,
+    Agilidade:1,
+    Stamina:9,
+  }
+}
+
+var bey5 = {
+  nome:"Spyzen S2",
+  imagem: "https://i.imgur.com/YM0Y3G7.png",
+  atributos:{
+    Ataque:5,
+    Burst:2,
+    Defesa:2,
+    Peso:4,
+    Agilidade:3,
+    Stamina:5,
+  }
+}
+
+var bey6 = {
+  nome:"Valtryek",
+  imagem: "https://static.wikia.nocookie.net/beyga/images/5/5c/B01ValkyrieWingAccel.jpg",
+  atributos:{
+    Ataque:3,
+    Burst:3,
+    Defesa:2,
+    Peso:4,
+    Agilidade:3,
+    Stamina:4,
+  }
+}
+
+var bey7 = {
+  nome:"Roktavor",
+  imagem: "https://i.pinimg.com/originals/c2/b4/c6/c2b4c624835dc0d8c0883f87ee5d01f3.png",
+  atributos:{
+    Ataque:3,
+    Burst:2,
+    Defesa:1,
+    Peso:4,
+    Agilidade:4,
+    Stamina:3
+  }
+}
+
+var bey8 = {
+  nome:"Spryzen",
+  imagem: "https://http2.mlstatic.com/D_NQ_NP_740269-MLB31124421699_062019-O.jpg",
+  atributos:{
+    Ataque:1,
+    Burst:2,
+    Defesa:5,
+    Peso:6,
+    Agilidade:4,
+    Stamina:1,
+  }
+}
+
+var bey9 = {
+  nome:"Kerbeus k2",
+  imagem: "https://i.imgur.com/bJEBlIC.png",
+  atributos:{
+    Ataque:0,
+    Burst:2,
+    Defesa:8,
+    Peso:6,
+    Agilidade:3,
+    Stamina:1,
+  }
+}
+
+var bey10 = {
+  nome:"Valtryek V2",
+  imagem: "https://pm1.narvii.com/6440/4d60db991d7d6a6cc04342f6f114ba11a0c61fcc_hq.jpg",
+  atributos:{
+    Ataque:6,
+    Burst:4,
+    Defesa:1,
+    Peso:2,
+    Agilidade:8,
+    Stamina:0
+  }
+}
+
+var bey11 = {
+  nome:"Minoboros",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/6/60/M_oq_hasbro.jpg",
+  atributos:{
+    Ataque:7,
+    Burst:3,
+    Defesa:0,
+    Peso:4,
+    Agilidade:5,
+    Stamina:0,
+  }
+}
+
+var bey12 = {
+  nome:"Yegdrion",
+  imagem: "https://images-americanas.b2w.io/produtos/01/00/img/51900/0/51900042_1GG.jpg",
+  atributos:{
+    Ataque:1,
+    Burst:2,
+    Defesa:1,
+    Peso:4,
+    Agilidade:3,
+    Stamina:8,
+  }
+}
+
+var bey13 = {
+  nome:"Unicrest",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/c/c7/U_rd_hasbro_recolor.jpg",
+  atributos:{
+    Ataque:0,
+    Burst:2,
+    Defesa:7,
+    Peso:5,
+    Agilidade:1,
+    Stamina:4,
+  }
+}
+
+var bey14 = {
+  nome:"Doomscizor D2",
+  imagem: "https://a-static.mlcdn.com.br/1500x1500/beyblade-burst-doomscizor-d2-hasbro/patrulhapresentes/1993p/778af361789006d611cc5284fe7d1b63.jpg",
+  atributos:{
+    Ataque:6,
+    Burst:3,
+    Defesa:0,
+    Peso:3,
+    Agilidade:6,
+    Stamina:2,
+  }
+}
+
+var bey15 = {
+  nome:"Wyvron W2",
+  imagem: "https://images-na.ssl-images-amazon.com/images/I/5195BhND%2B6L._SX500_SY500_CR,0,0,500,500_.jpg",
+  atributos:{
+    Ataque:2,
+    Burst:2,
+    Defesa:7,
+    Peso:5,
+    Agilidade:2,
+    Stamina:2,
+  }
+}
+
+var bey16 = {
+  nome:"Odax",
+  imagem: "https://images-americanas.b2w.io/produtos/01/00/img1/48692/7/48692742_1GG.jpg",
+  atributos:{
+    Ataque:6,
+    Burst:3,
+    Defesa:2,
+    Peso:5,
+    Agilidade:2,
+    Stamina:1
+  }
+}
+
+var bey17 = {
+  nome:"Horusood",
+  imagem: "https://i5.walmartimages.ca/images/Large/118/646/6000201118646.jpg",
+  atributos:{
+    Ataque:0,
+    Burst:2,
+    Defesa:3,
+    Peso:4,
+    Agilidade:3,
+    Stamina:7
+  }
+}
+
+var bey18 = {
+  nome:"Nepstrius",
+  imagem: "https://static3.tcdn.com.br/img/img_prod/639735/beyblade_com_lancador_hasbro_burst_nepstrius_n2_52_1_696d75f79d9ae21cb6c07f88a34a3d03.jpg",
+  atributos:{
+    Ataque:5,
+    Burst:2,
+    Defesa:2,
+    Peso:4,
+    Agilidade:4,
+    Stamina:3
+  }
+}
+
+var bey19 = {
+  nome:"Horusood H2",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/5/5c/H2_uc_hasbro.jpg",
+  atributos:{
+    Ataque:0,
+    Burst:1,
+    Defesa:1,
+    Peso:5,
+    Agilidade:3,
+    Stamina:10
+  }
+}
+
+var bey20 = {
+  nome:"Wyvron W2",
+  imagem: "https://images-americanas.b2w.io/produtos/01/00/img1/97641/7/97641776_1GG.jpg",
+  atributos:{
+    Ataque:2,
+    Burst:2,
+    Defesa:7,
+    Peso:5,
+    Agilidade:2,
+    Stamina:2
+  }
+}
+
+var bey21 = {
+  nome:"Roktavor R2",
+  imagem: "https://i5.walmartimages.ca/images/Large/462/437/6000198462437.jpg",
+  atributos:{
+    Ataque:1,
+    Burst:2,
+    Defesa:1,
+    Peso:7,
+    Agilidade:1,
+    Stamina:9
+  }
+}
+
+var bey22 = {
+  nome:"Evipero",
+  imagem: "https://i.imgur.com/zkOzZXY.jpeg",
+  atributos:{
+    Ataque:2,
+    Burst:2,
+    Defesa:7,
+    Peso:3,
+    Agilidade:5,
+    Stamina:0
+  }
+}
+
+var bey23 = {
+  nome:"Odax O2",
+  imagem: "https://i.imgur.com/LVIGlPo.png",
+  atributos:{
+    Ataque:7,
+    Burst:3,
+    Defesa:2,
+    Peso:4,
+    Agilidade:5,
+    Stamina:0
+  }
+}
+
+var bey24 = {
+  nome:"Betromoth",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/3/3a/B2_hh_hasbro.jpg",
+  atributos:{
+    Ataque:3,
+    Burst:4,
+    Defesa:1,
+    Peso:6,
+    Agilidade:4,
+    Stamina:2
+  }
+}
+
+var bey25 = {
+  nome:"Ifritor I2",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/d/d5/I2_ml_hasbro.jpg",
+  atributos:{
+    Ataque:7,
+    Burst:2,
+    Defesa:3,
+    Peso:3,
+    Agilidade:4,
+    Stamina:2
+  }
+}
+
+var bey26 = {
+  nome:"Xcalius X2",
+  imagem: "https://http2.mlstatic.com/D_NQ_NP_680280-MLB31123427369_062019-O.jpg",
+  atributos:{
+    Ataque:10,
+    Burst:5,
+    Defesa:0,
+    Peso:3,
+    Agilidade:3,
+    Stamina:1
+  }
+}
+
+var bey27 = {
+  nome:"Zeutron Z2",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/e/e1/Z2.jpg",
+  atributos:{
+    Ataque:0,
+    Burst:2,
+    Defesa:2,
+    Peso:8,
+    Agilidade:0,
+    Stamina:9
+  }
+}
+
+var bey28 = {
+  nome:"Quetziko Q2",
+  imagem: "https://images-na.ssl-images-amazon.com/images/I/81OkaMO3HsL._AC_SL1500_.jpg",
+  atributos:{
+    Ataque:1,
+    Burst:3,
+    Defesa:9,
+    Peso:6,
+    Agilidade:1,
+    Stamina:1      
+  }
+}
+
+var bey29 = {
+  nome:"XCalius",
+  imagem: "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/419/832/s-l1600__19760.1535849634.jpg",
+  atributos:{
+    Ataque:8,
+    Burst:4,
+    Defesa:0,
+    Peso:2,
+    Agilidade:6,
+    Stamina:0      
+  }
+}
+
+var bey30 = {
+  nome:"Yegdrion Y2",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/2/27/LayerYegdrionY2.png",
+  atributos:{
+    Ataque:0,
+    Burst:2,
+    Defesa:3,
+    Peso:6,
+    Agilidade:2,
+    Stamina:8      
+  }
+}
+
+var bey31 = {
+  nome:"Treptune",
+  imagem: "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/452/881/s-l1600__45563.1536187293.jpg",
+  atributos:{
+    Ataque:0,
+    Burst:2,
+    Defesa:1,
+    Peso:8,
+    Agilidade:1,
+    Stamina:7     
+  }
+  
+}
+
+var bey32 = {
+  nome:"Evipero E2",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/e/ee/E2_he_hasbro.jpg",
+  atributos:{
+    Ataque:1,
+    Burst:2,
+    Defesa:3,
+    Peso:6,
+    Agilidade:4,
+    Stamina:4      
+  }
+  
+}
+
+var bey33 = {
+  nome:"Gaianon G2",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/8/84/G2_qf_hasbro_no_outline.png",
+  atributos:{
+    Ataque:6,
+    Burst:2,
+    Defesa:3,
+    Peso:5,
+    Agilidade:2,
+    Stamina:2      
+  }
+  
+}
+
+var bey34 = {
+  nome:"Jormuntor J2",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/6/67/J2_i_cy_hasbro.jpg",
+  atributos:{
+    Ataque:1,
+    Burst:2,
+    Defesa:2,
+    Peso:4,
+    Agilidade:3,
+    Stamina:9     
+  }
+  
+}
+
+var bey35 = {
+  nome:"Fengriff F2",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/2/25/F2_bj_hasbro.jpg",
+  atributos:{
+    Ataque:5,
+    Burst:2,
+    Defesa:2,
+    Peso:3,
+    Agilidade:7,
+    Stamina:1      
+  }
+}
+
+var bey36 = {
+  nome:"Neptrius N2",
+  imagem: "https://static.wikia.nocookie.net/beyblade/images/e/ec/N2_vz_hasbro_recolor.jpg",
+  atributos:{
+    Ataque:5,
+    Burst:2,
+    Defesa:2,
+    Peso:4,
+    Agilidade:4,
+    Stamina:3      
+  }
+}
+    
+//-->
+    
+    
+    
 //cria as variáveis para os beyblades que serão lançados e seus jogadores
 var beyMaquina
 var beyJogador
@@ -57,7 +498,7 @@ var jogador = {
   pontos: 0
 }
 var maquina = {
-  nome:"CPU",
+  nome:"Player 2",
   vitorias:0,
   empates:0,
   derrotas:0,
@@ -65,7 +506,7 @@ var maquina = {
 }
 
 //estabelece a array contendo o banco de dados
-var colecaoBeys = [bey1, bey2, bey3]
+var colecaoBeys = [bey1, bey2, bey3, bey4, bey5, bey6, bey7, bey8, bey9, bey10, bey11, bey12, bey13, bey14, bey15, bey16, bey17, bey18, bey19, bey20, bey21, bey22, bey23, bey24, bey25, bey26, bey27, bey28, bey29, bey30, bey31, bey32, bey33, bey34, bey34, bey35, bey36]
 //-->
 
 //inicia o jogo
