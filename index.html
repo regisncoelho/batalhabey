@@ -1,31 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>ImersaoDev Aulas 7, 8 e 9 - Batalha de Beyblades</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Batalha de Beyblades </title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
 </head>
-
 <body>
-  <div class="container">
-     <button onclick="sortearCarta()" id="btnSortear">Sortear beyblades</button> <button type="button" id="btnProximaRodada" onclick="proximaRodada()" disabled="true">Proxima rodada</button>
-    <div id="areajogo">
-      <div class="imgBey" id="imgBey"></div>
-      <div class="opcoes" id="opcoes"></div>    
-      <button type="button" id="btnJogar" onclick="jogar()" disabled="false">Batalhar</button>    
+  <main class="page-main">
+    <div class="game-controlers">
+      <button class="page-button" id="btnSortear" value="Sortear beyblades"> Sortear beyblades </button>
+      <button class="page-button" id="btnProximaRodada" disabled="true"> Próxima rodada</button>
     </div>
-
-    <div id="resultado"></div>
+    <div class="game-area">
+      <div class="game-instruction">
+        <h2 class="game-titles">Escolha um dos atributos para derrotar seu oponente: </h2>
+      </div>
+      <div class="middle-wrapper">
+        <div>
+          <h2 class="game-titles">Seu beyblade</h2>
+          <p class="game-cards">
+          </p>
+        </div>
+        <div class="game-atributes"></div>
+        <div class="game-result"></div>
+        <div>
+          <h2 class="game-titles">Seu oponente</h2>
+          <p class="game-cards">
+          </p>
+        </div>
+      </div>
+      <button class="page-button" id="btnJogar" disabled="true">Batalhar</button>
     </div>
-     
-		<div class="imagem1" id="imagemBeyInicial">
-      </div>
-    <div class="imagem2">
-        <img src="https://lat.beyblade.com/wp-content/uploads/2018/11/S1-BB_Valt_Pose1-66-2.png" class="valt"/>
-      </div>
-        
-  <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-mentalista.svg" class="page-logo" alt=""><a href="https://alura.com.br/" target="_blank"> <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo"></a>  
-
-
-  <script  src="./script.js"></script>
+    <div class="game-score">
+      <p class="player-score">0</p>
+      <p class="machine-score">0</p>
+    </div>
+    <picture class="imgInicial">
+      <source type="image/webp" srcset="assets/images/img_valtpose.webp">
+      <source type="image/png" srcset="assets/images/img_valtpose.png">
+      <img src="assets/images/img_valtpose.png" alt="O personagem Valt Aoi sorrindo em uma pose que transmite empolgação" width="400px" height="670px">
+    </picture>
+  </main>
+  <img src="assets/images/logo-imersao-mentalista.svg" class="page-logo" alt="Logo do evento imersãodev_, escrito por extenso com parte em azul e parte em branco" width="200px" height="40px">
+  <a href="https://alura.com.br/" target="_blank">
+    <img src="/assets/images/alura-logo.svg" alt="Logo escrito alura" class="alura-logo" width="40px" height="18px">
+  </a>
+  <script src="script.js"></script>
 </body>
 </html>
