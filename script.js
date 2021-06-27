@@ -2,11 +2,9 @@
 
 //https://www.hasbro.com/common/documents/D83B87D6E2AB4791A7BE48878ECE4410/150DCB7597DA4506B8E0899BA79C5338.pdf
 
-//exibe imagem na div imagemBeyInicial
-var imagemInicial = document.getElementById('imagemBeyInicial')
-imagemInicialTexto = "<img src='https://lat.beyblade.com/wp-content/uploads/2018/11/S1-BB_Valt_Bey66-1.png' class='beyInicial'/>"
-imagemInicial.innerHTML = imagemInicialTexto
-
+document.querySelector("#btnSortear").addEventListener('click', sortearCarta)
+document.querySelector("#btnProximaRodada").addEventListener('click', proximaRodada)
+document.querySelector("#btnJogar").addEventListener('click', jogar)
 
 //banco de dados
 
@@ -523,48 +521,46 @@ function sortearCarta(){
   beyJogador = colecaoBeys[numeroBeyJogador]
 //-->
   
-// apaga resultados anteriores
-  var imgBey = document.getElementById('imgBey')
-  imgBey.innerHTML = ""
-  var divResultado = document.getElementById("resultado")
-  divResultado.innerHTML = ""
-//-->
+// // apaga resultados anteriores
+//   var imgBey = document.getElementById('imgBey')
+//   imgBey.innerHTML = ""
+//   var divResultado = document.getElementById("resultado")
+//   divResultado.innerHTML = ""
+// //-->
  
  //habilita botão jogar e desabilita sortear
   document.getElementById('btnSortear').disabled = true
   document.getElementById('btnJogar').disabled = false
   document.getElementById('btnProximaRodada').disabled = true
+  document.querySelector(".game-area").classList.toggle("invisible")
   
  //chama funções associadas
   exibirImgBey()
-  exibirOpcoes() 
   exibirTabelaPontos()
-  
+  exibirOpcoes()
+
 }
+
 
 //exibe os beyblades sorteados no documento e os identifica
 function exibirImgBey(){
-  var imgBey = document.getElementById('imgBey')
-  var imgBeyTexto = "<h2>Escolha um dos atributos para derrotar seu oponente:</h2><div class='beyJogador' style float:'left'><h2>Seu beyblade</h2><p class='nomeBey'><img src=" + beyJogador.imagem + " height='180' width='180'><br>" + beyJogador.nome + "</p></div><div class='beyMaquina' style float:'left'><h2>Seu oponente</h2><p class='nomeBey'><img src=" + beyMaquina.imagem + " height='180' width='180'><br>" + beyMaquina.nome + "</p></div>"
-  
-  imgBey.innerHTML = imgBeyTexto
+  document.querySelector(".player1").insertAdjacentHTML("afterbegin","<img src=" + beyJogador.imagem + " height='180' width='180'><br><p style='font-size:1.25em;font-style:italic;margin:0.4em'>" + beyJogador.nome + "</span></p>")
+  document.querySelector(".player2").insertAdjacentHTML("afterbegin","<img src=" + beyMaquina.imagem + " height='180' width='180'><br><p style='font-size:1.25em;font-style:italic;margin:0.4em'>" + beyMaquina.nome + "</span></p>")
 }
 
 //exibe tabela de pontos no documento e calcula pontos
 function exibirTabelaPontos() {
-  var imagemInicial = document.getElementById('imagemBeyInicial')
-  imagemInicialTexto =  "<p class='nomeBey'><b><u>" + jogador.nome + "</u></b><br><br>" + "Vitórias: " + jogador.vitorias + " <br>" +  "Empates: " + jogador.empates + " <br>"  + "Derrotas: " + jogador.derrotas + " <br><br><b>Pontos: " + jogador.pontos + "</b></p>" +  "<p class='nomeBey'><b><u>" + maquina.nome + "</u></b><br><br>" + "Vitórias: " + maquina.vitorias + " <br>" +  "Empates: " + maquina.empates + " <br>"  + "Derrotas: " + maquina.derrotas + " <br><br><b>Pontos: " + maquina.pontos + "</b></p>"
-  imagemInicial.innerHTML = imagemInicialTexto
-  
+  document.querySelector(".game-score").classList.toggle("invisible")
+  document.querySelector(".player-score").insertAdjacentHTML("afterbegin","<b><u>" + jogador.nome + "</u></b><br><br>" + "Vitórias: " + jogador.vitorias + " <br>" +  "Empates: " + jogador.empates + " <br>"  + "Derrotas: " + jogador.derrotas + " <br><br><b>Pontos: " + jogador.pontos + "</b>")
+  document.querySelector(".machine-score").insertAdjacentHTML("afterbegin","<b><u>" + maquina.nome + "</u></b><br><br>" + "Vitórias: " + maquina.vitorias + " <br>" +  "Empates: " + maquina.empates + " <br>"  + "Derrotas: " + maquina.derrotas + " <br><br><b>Pontos: " + maquina.pontos + "</b>")
 }
   
 function exibirOpcoes(){
-  var opcoes = document.getElementById('opcoes')
   var opcoesTexto = ""
-   for (var atributo in beyJogador.atributos){
-   opcoesTexto += "<br><br><input type='checkbox' name='atributo' value='" + atributo + "'>" + atributo + "<br>"
-   }
- opcoes.innerHTML = opcoesTexto
+  for (var atributo in beyJogador.atributos){
+   opcoesTexto = "<div><input type='checkbox' name='atributo' value='" + atributo + "'>" + atributo + "</div>"
+   document.querySelector(".game-atributes").insertAdjacentHTML("afterbegin", opcoesTexto)
+  }
 }
 
 function obtemAtributoSelecionado(){
@@ -577,69 +573,57 @@ function obtemAtributoSelecionado(){
 }
 
 function jogar(){
-  
   var atributoSelecionado = obtemAtributoSelecionado()
-  var divResultado = document.getElementById("resultado")
-    if (beyJogador.atributos[atributoSelecionado] > beyMaquina.atributos[atributoSelecionado]){
-        htmlResultado = '<p class="resultado-final">Escolheu: '+ atributoSelecionado + '<br><BR>VENCEU!</p>' 
+  if (beyJogador.atributos[atributoSelecionado] > beyMaquina.atributos[atributoSelecionado]){
+    document.querySelector(".game-result").insertAdjacentHTML("afterbegin",'VENCEU!')
+    document.querySelector(".game-result").style.backgroundColor = "#40C4FF"
         playVenceu()
         jogador.vitorias++
         maquina.derrotas++
         jogador.pontos += 3
         
   } else if (beyJogador.atributos[atributoSelecionado] < beyMaquina.atributos[atributoSelecionado]){
-        htmlResultado = '<p class="resultado-final">Escolheu: '+ atributoSelecionado + '<br><BR>PERDEU</p>'
+    document.querySelector(".game-result").insertAdjacentHTML("afterbegin",'PERDEU')
         playPerdeu()
         maquina.vitorias++
         jogador.derrotas++
         maquina.pontos += 3
-        
-        
-        
   } else {
-        htmlResultado = '<p class="resultado-final">Escolheu: '+ atributoSelecionado + '<br><BR>EMPATOU</p>'
+    document.querySelector(".game-result").insertAdjacentHTML("afterbegin",'EMPATOU')
+    document.querySelector(".game-result").style.backgroundColor = "#ffa775"
         playEmpatou()
         maquina.empates++
         jogador.empates++
         maquina.pontos++
         jogador.pontos++
-        
   }
   exibirBeyAtributos()
   jogadas++
   
-  opcoes.innerHTML = ""
-  divResultado.innerHTML = htmlResultado
-  
-  
+  document.querySelector(".game-atributes").classList.toggle("invisible")
+  document.querySelector(".game-result").classList.toggle("invisible")
   document.getElementById('btnSortear').disabled = true
   document.getElementById('btnJogar').disabled = true
   document.getElementById('btnProximaRodada').disabled = false
   }
 
-function exibirBeyAtributos(){
-  var atributoSelecionado = obtemAtributoSelecionado()
-  var imgBey = document.getElementById('imgBey')
-  
+function exibirBeyAtributos() { 
   var revelaTextoJogador = ""
   for (var atributo in beyJogador.atributos){
-  revelaTextoJogador += "<i>" + atributo + "</i>: <b>" + beyJogador.atributos[atributo] + "</b><br>"
+  revelaTextoJogador += "<span style='font-weight: 400'>" + atributo + "</span>: " + beyJogador.atributos[atributo] + "<br>"
   }
   var revelaTextoMaquina = ""
   for (var atributo in beyMaquina.atributos){
-  revelaTextoMaquina += "<i>" + atributo + "</i>: <b>" + beyMaquina.atributos[atributo] + "</b><br>"
+  revelaTextoMaquina += "<span style='font-weight: 400'>" + atributo + "</span>: " + beyMaquina.atributos[atributo] + "<br>"
   }
   
-  var imgBeyTexto = "<h2>Escolha um dos atributos para derrotar seu oponente:</h2><div class='beyJogador' style float:'left'><h2>Seu beyblade</h2><p class='nomeBey'><img src=" + beyJogador.imagem + " height='180' width='180'><br><b>" + beyJogador.nome + "</b><br><br>" + revelaTextoJogador + "</p></div><div class='beyMaquina' style float:'left'><h2>Seu oponente</h2><p class='nomeBey'><img src=" + beyMaquina.imagem + " height='180' width='180'><br><b>" + beyMaquina.nome + "</b><br><br>" + revelaTextoMaquina + "</p></div>"
-  
-  imgBey.innerHTML = imgBeyTexto
-  
+  document.querySelector(".player1").insertAdjacentHTML("beforeend", revelaTextoJogador)
+  document.querySelector(".player2").insertAdjacentHTML("beforeend", revelaTextoMaquina)  
 }
 
 function proximaRodada () {
   playSomaPontos()
-  exibirTabelaPontos()
- var divResultado = document.getElementById("resultado")
+var divResultado = document.getElementById("resultado")
  if (jogadas < 5) {
  var divArea = document.getElementById('areajogo')
  divArea.innerHTML = `<div class="imgBey" id="imgBey"></div>
@@ -673,10 +657,7 @@ function proximaRodada () {
   document.getElementById('btnSortear').disabled = true
   document.getElementById('btnJogar').disabled = true
   document.getElementById('btnProximaRodada').disabled = true
- 
 }
-
-  
 }
 
 function restart (){
