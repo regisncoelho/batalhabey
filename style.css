@@ -122,14 +122,19 @@ body {
   /* border: 2px solid black; */
   border-radius: 4px;
   background-color: #e8475f;
-  width: min-content;
   height: fit-content;
   margin: auto 1em;
+  text-align: center;
 }
 
 .invisible {
+  visibility: hidden;
+}
+
+.empty {
   display: none;
 }
+
 
 .player-score, .machine-score {
   background-color: #e8475f;

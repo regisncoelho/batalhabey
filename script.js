@@ -533,6 +533,11 @@ function sortearCarta(){
   document.getElementById('btnJogar').disabled = false
   document.getElementById('btnProximaRodada').disabled = true
   document.querySelector(".game-area").classList.toggle("invisible")
+
+  if (document.querySelector(".game-score").classList.contains("invisible")){
+    document.querySelector(".game-score").classList.toggle("invisible")
+  }
+  
   
  //chama funções associadas
   exibirImgBey()
@@ -548,19 +553,31 @@ function exibirImgBey(){
   document.querySelector(".player2").insertAdjacentHTML("afterbegin","<img src=" + beyMaquina.imagem + " height='180' width='180'><br><p style='font-size:1.25em;font-style:italic;margin:0.4em'>" + beyMaquina.nome + "</span></p>")
 }
 
+function clearScore() {
+  while (document.querySelector(".player-score").lastElementChild) {
+    document.querySelector(".player-score").removeChild(document.querySelector(".player-score").firstChild)
+  }
+  while (document.querySelector(".machine-score").lastElementChild) {
+    document.querySelector(".machine-score").removeChild(document.querySelector(".machine-score").firstChild) 
+  }
+}
 //exibe tabela de pontos no documento e calcula pontos
 function exibirTabelaPontos() {
-  document.querySelector(".game-score").classList.toggle("invisible")
+  clearScore()
   document.querySelector(".player-score").insertAdjacentHTML("afterbegin","<b><u>" + jogador.nome + "</u></b><br><br>" + "Vitórias: " + jogador.vitorias + " <br>" +  "Empates: " + jogador.empates + " <br>"  + "Derrotas: " + jogador.derrotas + " <br><br><b>Pontos: " + jogador.pontos + "</b>")
   document.querySelector(".machine-score").insertAdjacentHTML("afterbegin","<b><u>" + maquina.nome + "</u></b><br><br>" + "Vitórias: " + maquina.vitorias + " <br>" +  "Empates: " + maquina.empates + " <br>"  + "Derrotas: " + maquina.derrotas + " <br><br><b>Pontos: " + maquina.pontos + "</b>")
 }
   
 function exibirOpcoes(){
-  var opcoesTexto = ""
+  opcoesTexto = ""
   for (var atributo in beyJogador.atributos){
    opcoesTexto = "<div><input type='checkbox' name='atributo' value='" + atributo + "'>" + atributo + "</div>"
    document.querySelector(".game-atributes").insertAdjacentHTML("afterbegin", opcoesTexto)
   }
+  if (document.querySelector(".game-atributes").classList.contains("empty")) {
+     document.querySelector(".game-atributes").classList.toggle("empty")
+   }
+  
 }
 
 function obtemAtributoSelecionado(){
@@ -575,7 +592,7 @@ function obtemAtributoSelecionado(){
 function jogar(){
   var atributoSelecionado = obtemAtributoSelecionado()
   if (beyJogador.atributos[atributoSelecionado] > beyMaquina.atributos[atributoSelecionado]){
-    document.querySelector(".game-result").insertAdjacentHTML("afterbegin",'VENCEU!')
+    document.querySelector(".game-result").insertAdjacentText("afterbegin",'VENCEU!')
     document.querySelector(".game-result").style.backgroundColor = "#40C4FF"
         playVenceu()
         jogador.vitorias++
@@ -583,13 +600,13 @@ function jogar(){
         jogador.pontos += 3
         
   } else if (beyJogador.atributos[atributoSelecionado] < beyMaquina.atributos[atributoSelecionado]){
-    document.querySelector(".game-result").insertAdjacentHTML("afterbegin",'PERDEU')
+    document.querySelector(".game-result").insertAdjacentText("afterbegin",'PERDEU')
         playPerdeu()
         maquina.vitorias++
         jogador.derrotas++
         maquina.pontos += 3
   } else {
-    document.querySelector(".game-result").insertAdjacentHTML("afterbegin",'EMPATOU')
+    document.querySelector(".game-result").insertAdjacentText("afterbegin",'EMPATOU')
     document.querySelector(".game-result").style.backgroundColor = "#ffa775"
         playEmpatou()
         maquina.empates++
@@ -600,8 +617,8 @@ function jogar(){
   exibirBeyAtributos()
   jogadas++
   
-  document.querySelector(".game-atributes").classList.toggle("invisible")
-  document.querySelector(".game-result").classList.toggle("invisible")
+  document.querySelector(".game-atributes").classList.toggle("empty")
+  document.querySelector(".game-result").classList.toggle("empty")
   document.getElementById('btnSortear').disabled = true
   document.getElementById('btnJogar').disabled = true
   document.getElementById('btnProximaRodada').disabled = false
@@ -621,39 +638,55 @@ function exibirBeyAtributos() {
   document.querySelector(".player2").insertAdjacentHTML("beforeend", revelaTextoMaquina)  
 }
 
+function clearPrevious() { 
+  clearScore()
+
+  while (document.querySelector(".player1").lastElementChild) {
+    document.querySelector(".player1").removeChild(document.querySelector(".player1").firstChild)
+  }
+  while (document.querySelector(".player2").lastElementChild) {
+    document.querySelector(".player2").removeChild(document.querySelector(".player2").firstChild)
+  }
+  while (document.querySelector(".game-result").lastElementChild) {
+    document.querySelector(".game-result").removeChild(document.querySelector(".game-result").firstChild)
+  }
+  while (document.querySelector(".game-atributes").lastElementChild) {
+    document.querySelector(".game-atributes").removeChild(document.querySelector(".game-atributes").firstChild)
+  }
+  document.querySelector(".game-result").textContent = ''
+  document.querySelector(".game-result").classList.toggle("empty")
+  document.querySelector(".game-atributes").classList.toggle("empty")
+  document.querySelector(".game-area").classList.toggle("invisible")
+}
+
 function proximaRodada () {
+  clearPrevious()
+  exibirTabelaPontos()
   playSomaPontos()
 var divResultado = document.getElementById("resultado")
- if (jogadas < 5) {
- var divArea = document.getElementById('areajogo')
- divArea.innerHTML = `<div class="imgBey" id="imgBey"></div>
-      <div class="opcoes" id="opcoes"></div> <button type="button" id="btnJogar" onclick="jogar()" disabled="false">Batalhar</button>`
-  
+ if (jogadas < 5) {  
   document.getElementById('btnSortear').disabled = false
   document.getElementById('btnJogar').disabled = true
   document.getElementById('btnProximaRodada').disabled = true
- 
-// apaga resultados anteriores
-  var imgBey = document.getElementById('imgBey')
-  imgBey.innerHTML = ""
-  
-  divResultado.innerHTML = ""
-//-->
    
  } else {
-    if (jogador.pontos > maquina.pontos) {
-      htmlResultado = '<p class="resultado-final"><b>FIM DO JOGO</b><br><br><u>' + jogador.nome + '</u> venceu</p><br>' + '<button type="button" id="btnJogar" onclick="restart()">Recomeçar</button>'
-    } else if (maquina.pontos > jogador.pontos) {
-      htmlResultado = '<p class="resultado-final"><b>FIM DO JOGO</b><br><br><u>' + maquina.nome + '</u> venceu</p><br>' + '<button type="button" id="btnJogar" onclick="restart()">Recomeçar</button>'
-    } else {
-      htmlResultado = '<p class="resultado-final"><b>FIM DO JOGO</b><br><br><u>' + jogador.nome + '</u> e <u>' + maquina.nome + '</u> empataram</p><br>' + '<button type="button" id="btnJogar" onclick="restart()">Recomerçar</button>'
-    
-    }
-  var imgBey = document.getElementById('imgBey')
-  imgBey.innerHTML = ""
-  
-  divResultado.innerHTML = htmlResultado
-   
+  document.querySelector(".game-result").classList.toggle("empty");
+  document.querySelector(".game-area").classList.toggle("invisible");
+  document.querySelector(".game-instruction").classList.toggle("empty");
+  document.querySelector(".game-atributes").classList.toggle("empty");
+  document.querySelector(".parcial1").classList.toggle("empty");
+  document.querySelector(".parcial2").classList.toggle("empty")
+  if (jogador.pontos > maquina.pontos) {
+      document.querySelector(".game-result").insertAdjacentHTML("afterbegin","<b>FIM DO JOGO</b><br><br><u>" + jogador.nome + "</u> venceu <br><br><button type='button' id='btnJogar' onclick='restart()''>Recomeçar</button><br>")
+      document.querySelector(".game-result").style.backgroundColor = "#40C4FF"
+  } else if (maquina.pontos > jogador.pontos) {
+      document.querySelector(".game-result").insertAdjacentHTML("afterbegin","<b>FIM DO JOGO</b><br><br><u>" + maquina.nome + "</u> venceu <br><br><button type='button' id='btnJogar' onclick='restart()'>Recomeçar</button><br>")
+      document.querySelector(".game-result").style.backgroundColor = "#e8475f"
+  } else {
+      document.querySelector(".game-result").insertAdjacentHTML("afterbegin","<b>FIM DO JOGO</b><br><br><u>" + jogador.nome + "</u> e <u>" + maquina.nome + "</u> empataram <br><br>" + "<button type='button' id='btnJogar' onclick='restart()'>Recomerçar</button><br>")
+      document.querySelector(".game-result").style.backgroundColor = "#ffa775"
+  }
+  document.querySelector(".game-result").style.width  = "500px"
   document.getElementById('btnSortear').disabled = true
   document.getElementById('btnJogar').disabled = true
   document.getElementById('btnProximaRodada').disabled = true
